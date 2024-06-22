@@ -36,13 +36,13 @@ Ensure you have the following dependencies installed:
 
 To see a demo of this project, simply run the main.py file:
 
-```sh
+```
 python main.py
 ```
 
 Team - Stakers (Amazon Hack On)
 Members -
-Soumyadeep Dey
-Pritam Raj
-Shubham Bisht
+Soumyadeep Dey,
+Pritam Raj,
+Shubham Bisht,
 Sidhant Mishra
