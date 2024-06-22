@@ -1,62 +1,62 @@
 [
     {
-        "product_id": "B018",
-        "product_name": "Pant",
-        "image_name": "38.jpg",
-        "similarity_score": 0.7156882286071777
+        "product_id": "H009",
+        "product_name": "Dress",
+        "image_name": "528df19ff258e30af19f6a34833c164d.jpg",
+        "similarity_score": 0.5462305545806885
     },
     {
-        "product_id": "B003",
-        "product_name": "Pant",
-        "image_name": "23.jpg",
-        "similarity_score": 0.6941648721694946
+        "product_id": "H015",
+        "product_name": "Dress",
+        "image_name": "b25050d48cac9a4a400f57b8c03a097e.jpg",
+        "similarity_score": 0.4742599129676819
     },
     {
-        "product_id": "B013",
-        "product_name": "Pant",
-        "image_name": "33.jpg",
-        "similarity_score": 0.6897736191749573
+        "product_id": "H010",
+        "product_name": "Dress",
+        "image_name": "46419da441b9c91b7a8e6180fd626e20.jpg",
+        "similarity_score": 0.45872998237609863
     },
     {
-        "product_id": "B010",
-        "product_name": "Pant",
-        "image_name": "30.jpg",
-        "similarity_score": 0.6793455481529236
+        "product_id": "H017",
+        "product_name": "Dress",
+        "image_name": "c971c758963269fb894eca2c7c693c71.jpg",
+        "similarity_score": 0.4527134299278259
     },
     {
-        "product_id": "B006",
-        "product_name": "Pant",
-        "image_name": "26.jpg",
-        "similarity_score": 0.6722413301467896
+        "product_id": "H013",
+        "product_name": "Dress",
+        "image_name": "ae8ba003a7e312a43afebbe28838c8d7.jpg",
+        "similarity_score": 0.4509432911872864
     },
     {
-        "product_id": "B005",
-        "product_name": "Pant",
-        "image_name": "25.jpg",
-        "similarity_score": 0.6699920892715454
+        "product_id": "H008",
+        "product_name": "Dress",
+        "image_name": "120e25b363617fbba1493f802ceaf4bc.jpg",
+        "similarity_score": 0.4135425090789795
     },
     {
-        "product_id": "B016",
-        "product_name": "Pant",
-        "image_name": "36.jpg",
-        "similarity_score": 0.6687331795692444
+        "product_id": "H001",
+        "product_name": "Dress",
+        "image_name": "05cdc058c937a106cfd5a0fb97fb27ee.jpg",
+        "similarity_score": 0.3928043246269226
     },
     {
-        "product_id": "B007",
-        "product_name": "Pant",
-        "image_name": "27.jpg",
-        "similarity_score": 0.6590773463249207
+        "product_id": "H016",
+        "product_name": "Dress",
+        "image_name": "c630a51187b689f6b6d4d12d3c5b1989.jpg",
+        "similarity_score": 0.38661473989486694
     },
     {
-        "product_id": "B004",
-        "product_name": "Pant",
-        "image_name": "24.jpg",
-        "similarity_score": 0.6436610221862793
+        "product_id": "H018",
+        "product_name": "Dress",
+        "image_name": "e2ebb848e75b7a607efe23ebb7b5ea44.jpg",
+        "similarity_score": 0.3782176971435547
     },
     {
-        "product_id": "B017",
-        "product_name": "Pant",
-        "image_name": "37.jpg",
-        "similarity_score": 0.6402767896652222
+        "product_id": "H020",
+        "product_name": "Dress",
+        "image_name": "ecadbacd87db69a63d892538ff5b3f8a.jpg",
+        "similarity_score": 0.36925989389419556
     }
 ]

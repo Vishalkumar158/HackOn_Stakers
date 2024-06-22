@@ -1,1 +1,22 @@
-{}
+{
+    "0": [
+        {
+            "DRESS": "DRESScrop0.jpg"
+        }
+    ],
+    "1": [
+        {
+            "SHIRT": "SHIRTcrop1.jpg"
+        }
+    ],
+    "2": [
+        {
+            "PANT": "PANTcrop2.jpg"
+        }
+    ],
+    "3": [
+        {
+            "TIE": "TIEcrop3.jpg"
+        }
+    ]
+}
