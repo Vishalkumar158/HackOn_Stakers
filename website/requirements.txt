@@ -1,0 +1,13 @@
+numpy==1.24.3
+pandas
+matplotlib
+pillow==10.0.0
+opencv-python
+scikit-learn
+tensorflow
+ultralytics==8.2.35
+keras==2.12.0
+flask==2.3.2
+gunicorn==20.1.0
+Werkzeug==2.3.6
+Jinja2==3.1.2
