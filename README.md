@@ -26,7 +26,6 @@ Ensure you have the following dependencies installed:
 
     ```sh
     git clone https://github.com/your-repo/product-recommender.git
-    cd product-recommender
     ```
 
 2. **Install the dependencies:**
