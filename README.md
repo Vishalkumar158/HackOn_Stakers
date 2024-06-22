@@ -23,7 +23,7 @@ Ensure you have the following dependencies installed:
 1. *Clone the repository:*
 
     sh
-    git clone https://github.com/your-repo/product-recommender.git
+    git clone [https://github.com/your-repo/product-recommender.git](https://github.com/Soumyadeep-Dey36/HackOn_Stakers)
     
 
 2. *Install the dependencies:*
@@ -38,7 +38,7 @@ To see a demo of this project, simply run the main.py file:
 
 ```sh
 python main.py
-
+```
 
 Team - Stakers (Amazon Hack On)
 Members -
