@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Matches</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        #product-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        #product-images img {
+            max-width: 150px;
+            height: auto;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+    </style>
+</head>
+<body>
+    <h1 id="category-title">Recommended Products</h1>
+    <div id="product-images"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script>
+        async function loadCSV() {
+            try {
+                const response = await fetch('{{ url_for('static', filename='dataset_for_cosine_relation.csv') }}');
+                const csvText = await response.text();
+                return new Promise((resolve, reject) => {
+                    Papa.parse(csvText, {
+                        header: true,
+                        complete: function(results) {
+                            resolve(results.data);
+                        },
+                        error: function(error) {
+                            reject(error);
+                        }
+                    });
+                });
+            } catch (error) {
+                throw error;
+            }
+        }
+
+        async function loadTop10() {
+            try {
+                const response = await fetch('{{ url_for('static', filename='recommended_obj.json') }}');
+                const jsonData = await response.json();
+                return jsonData;
+            } catch (error) {
+                throw error;
+            }
+        }
+        function displayImagesForCategory(data, top10) {
+            console.log(top10)
+            if (!Array.isArray(data)) {
+                return;
+            }
+            
+            const container = document.getElementById("product-images");
+            container.innerHTML = '';
+
+            data.forEach(row => {
+                console.log(row.product_id); // Log product_id for debugging
+
+                // Check if product_id is in top10
+                const isInTop10 = top10.some(item => item.product_id === row.product_id);
+                
+                if (isInTop10) {
+
+                    const imgName = row.image_name;
+                    const category = row.product_name.toUpperCase();
+                    console.log(category); // Log category for debugging
+                    
+                    if (imgName) {
+                        const imgElement = document.createElement("img");
+                        imgElement.src = `../static/product_images/${category}/${imgName}`;
+                        imgElement.alt = row.product_id;
+                        container.appendChild(imgElement);
+                    }
+                }
+            });
+ 
+        }
+
+        async function handleCategory() {
+            try {
+                const [data, top10] = await Promise.all([loadCSV(), loadTop10()]);
+                displayImagesForCategory(data, top10);
+            } catch (error) {
+                console.error("Error handling category", error);
+            }
+        }
+        handleCategory()
+
+    </script>
+</body>
+</html>

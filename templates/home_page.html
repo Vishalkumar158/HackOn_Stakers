@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="#">
+    <title>Hack On Recommender</title>
+    <!-- Include Font Awesome CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-image: url('az.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            color: #fff;
+        }
+        #side-panel {
+            flex: 0 0 250px;
+            max-width: 240px;
+            padding: 20px;
+            margin-right: 20px;
+            border-right: 2px solid rgba(255, 255, 255, 0.2);
+            /*  */
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(-100%);
+            height: 100%;
+            box-sizing: border-box;
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            overflow-y: auto;
+        }
+        #side-panel.open {
+            transform: translateX(0);
+        }
+        #side-panel h2 {
+            margin-top: 0;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+        }
+        #side-panel h2 i {
+            margin-right: 10px;
+        }
+        #side-panel img {
+            max-width: 100%;
+            margin: 10px 0;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+        #video-container {
+            width: 80%;
+            max-width: 940px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+        }
+        #videoPlayer {
+            width: 100%;
+            max-width: 940px;
+            height: auto;
+            border: 2px solid yellow;
+            border-radius: 8px;
+        }
+        #imageGallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+            transition: transform 0.3s ease;
+        }
+        .image-container:hover {
+            transform: scale(1.05);
+        }
+        .image-container img {
+            max-width: 100px;
+            height: auto;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .image-container p {
+            margin-top: 5px;
+            font-size: 14px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="side-panel">
+        <!-- Use Font Awesome icons -->
+        <h2><i class="fas fa-images"></i> Stored Images</h2>
+        <div id="image-gallery"></div>
+    </div>
+    <div id="video-container">
+        <video id="videoPlayer" controls>
+            <source src="{{ url_for('static', filename='videos/lalaland.mp4') }}" type="video/mp4">
+        </video>
+        <canvas id="canvas" style="display: none;"></canvas>
+    </div>
+    
+    <script>
+        var video = document.getElementById('videoPlayer');
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        var sidePanel = document.getElementById('side-panel');
+        var imageGallery = document.getElementById('image-gallery');
+
+        async function sendNumber(number) {
+            try {
+                const response = await fetch('/img_recommend', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams({
+                        data: number
+                    })
+                });
+        
+                if (response.ok) {
+                    // Redirect to third.html on successful response
+                    window.location.href = "/redirect_second";
+                } else {
+                    const result = await response.json();
+                    alert(result.message);
+                }
+            } catch (error) {
+                alert('An error occurred. Please try again.');
+            }
+        }
+
+        video.addEventListener('loadedmetadata', function() {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+        }, false);
+
+        video.addEventListener('pause', function() {
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            var dataURL = canvas.toDataURL('image/jpg');
+            localStorage.setItem('snapshot', dataURL);
+
+            async function send_data() {
+                if (dataURL) {
+                    try {
+                        const response = await fetch('/save_data', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ image: dataURL }) // Send as JSON
+                        });
+            
+                        if (!response.ok) {
+                            throw new Error('Failed to save data');
+                        }
+            
+                        const result = await response.json();
+                    //    alert('Data sent to server: ' + JSON.stringify(result));
+            
+                        // Call displayImages() only after successful fetch
+                        displayImages();
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('An error occurred while sending data to the server.');
+                    }
+                } else {
+                    alert('No data in local storage');
+                }
+            }
+            send_data();
+            
+            if (!sidePanel.classList.contains('open')) {
+                sidePanel.classList.add('open');
+            }
+        });
+
+        video.addEventListener('play', function() {
+            if (sidePanel.classList.contains('open')) {
+                sidePanel.classList.remove('open');
+            }
+        });
+
+        function openNewPage() {
+            window.open('third.html', '_blank');
+        }
+
+        function displayImages() {
+            imageGallery.innerHTML = '';
+            fetch('{{ url_for('static', filename='detected_obj.json') }}')
+                .then(response => response.json())
+                .then(data => {
+                    Object.keys(data).forEach(function(number) {
+                        data[number].forEach(function(item) {
+                            Object.entries(item).forEach(function([key, src]) {
+                                const container = document.createElement('div');
+                                container.classList.add('image-container');
+
+                                const img = document.createElement('img');
+                                img.src = `../static/images/yolo_out/${src}`;
+                                img.alt = key;
+
+                                const levelText = document.createElement('p');
+                                levelText.textContent = key;
+
+                                container.appendChild(img);
+                                container.appendChild(levelText);
+
+                                container.addEventListener('click', function() {
+                                    sendNumber(number);
+                                });
+
+                                imageGallery.appendChild(container);
+                            });
+                        });
+                    });
+                })
+                .catch(error => console.error('Error loading JSON data:', error));
+        }
+    </script>
+</body>
+</html>
