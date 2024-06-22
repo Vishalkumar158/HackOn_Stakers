@@ -1,0 +1,62 @@
+[
+    {
+        "product_id": "B018",
+        "product_name": "Pant",
+        "image_name": "38.jpg",
+        "similarity_score": 0.7156882286071777
+    },
+    {
+        "product_id": "B003",
+        "product_name": "Pant",
+        "image_name": "23.jpg",
+        "similarity_score": 0.6941648721694946
+    },
+    {
+        "product_id": "B013",
+        "product_name": "Pant",
+        "image_name": "33.jpg",
+        "similarity_score": 0.6897736191749573
+    },
+    {
+        "product_id": "B010",
+        "product_name": "Pant",
+        "image_name": "30.jpg",
+        "similarity_score": 0.6793455481529236
+    },
+    {
+        "product_id": "B006",
+        "product_name": "Pant",
+        "image_name": "26.jpg",
+        "similarity_score": 0.6722413301467896
+    },
+    {
+        "product_id": "B005",
+        "product_name": "Pant",
+        "image_name": "25.jpg",
+        "similarity_score": 0.6699920892715454
+    },
+    {
+        "product_id": "B016",
+        "product_name": "Pant",
+        "image_name": "36.jpg",
+        "similarity_score": 0.6687331795692444
+    },
+    {
+        "product_id": "B007",
+        "product_name": "Pant",
+        "image_name": "27.jpg",
+        "similarity_score": 0.6590773463249207
+    },
+    {
+        "product_id": "B004",
+        "product_name": "Pant",
+        "image_name": "24.jpg",
+        "similarity_score": 0.6436610221862793
+    },
+    {
+        "product_id": "B017",
+        "product_name": "Pant",
+        "image_name": "37.jpg",
+        "similarity_score": 0.6402767896652222
+    }
+]
