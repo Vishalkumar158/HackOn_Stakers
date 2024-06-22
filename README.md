@@ -17,7 +17,7 @@ Welcome to our Product Recommender System project for the Amazon Hack-on! This p
 
 Ensure you have the following dependencies installed:
 
-- Python 3.x
+- Python 3.0
 - Required Python libraries (specified in `requirements.txt`)
 
 ### Installation
