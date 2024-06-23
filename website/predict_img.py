@@ -5,13 +5,13 @@ import cv2, json, sys
 def predict():
     # Define paths
     # IMAGE_DIR = 'C:/Users/User/Downloads/HackOn/website/images'
-    IMAGE_DIR = os.path.join('.', 'website/static/images')
-    DICTIONARY_DIR = os.path.join('.', 'website/static')
+    IMAGE_DIR = os.path.join('.', 'static/images')
+    DICTIONARY_DIR = os.path.join('.', 'static')
     image_path = os.path.join(IMAGE_DIR, 'snap.jpg')
     image_path_out = os.path.join(IMAGE_DIR, 'snap_out.jpg')
     cropped_dir = os.path.join(IMAGE_DIR, 'yolo_out')
     json_path = os.path.join(DICTIONARY_DIR, 'detected_obj.json')
-    model_path = os.path.join('.', 'website/yolo_model.pt')
+    model_path = os.path.join('.', 'yolo_model.pt')
     
     def delete_files_in_folder(folder_path):
         try:
