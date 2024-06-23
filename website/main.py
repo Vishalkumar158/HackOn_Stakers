@@ -39,7 +39,7 @@ def save_data():
         image_data = base64.b64decode(base64_str)
         
         # Save the image to a file
-        img_dir = os.path.join('.', 'website/static/images')
+        img_dir = os.path.join('.', 'static/images')
         # img_dir = 'C:/Users/User/Downloads/HackOn/website/static/images'
         img_path = os.path.join(img_dir, 'snap.jpg')
         
@@ -64,7 +64,7 @@ def img_recommend():
         app.logger.debug(f"Received data: {data}")
         
         # Path to the JSON file
-        json_file_path = os.path.join('.', 'website/static/detected_obj.json')
+        json_file_path = os.path.join('.', 'static/detected_obj.json')
         
         # Load JSON file from the file
         with open(json_file_path, 'r') as json_file:
