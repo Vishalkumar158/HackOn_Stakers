@@ -22,13 +22,13 @@ Ensure you have the following dependencies installed:
 
 1. *Clone the repository:*
 
-    sh
+    ```sh
     git clone [https://github.com/your-repo/product-recommender.git](https://github.com/Soumyadeep-Dey36/HackOn_Stakers)
     
 
 2. *Install the dependencies:*
 
-    sh
+    ```sh
     pip install -r requirements.txt
     
 
